@@ -15,6 +15,9 @@
 import 'package:flutter/foundation.dart'
     show debugDefaultTargetPlatformOverride;
 import 'package:flutter/material.dart';
+import 'lseqx.dart';
+import 'randomword.dart';
+import 'drag.dart';
 
 void main() {
   // See https://github.com/flutter/flutter/wiki/Desktop-shells#target-platform-override
@@ -61,6 +64,30 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        leading: RaisedButton(
+          child: Icon(Icons.menu),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Lseqx()));
+          },
+        ),
+      ),
+      endDrawer: new Drawer(
+        child: ListView(
+          children: <Widget>[
+            RaisedButton(
+              child: Text('RandomWord'),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyAppRandom()));
+              },
+            ),
+            RaisedButton(
+              child: Text('DragPage'),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => DragPage()));
+              },
+            )
+          ],
+        ),
       ),
       body: Center(
         child: Column(
